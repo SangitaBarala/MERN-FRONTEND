@@ -3,15 +3,16 @@ import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import {useDispatch} from "react-redux";
 
 import {getPosts} from './actions/posts'
+
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 
 import memory from '../src/components/images/memory.jpg';
 
-import useStyle from './styles'
+import useStyles from './styles'
 
 const App = () => {
-    const classes = useStyle();
+    const classes = useStyles();
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getPosts());
@@ -22,16 +23,15 @@ const App = () => {
                 <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
                 <img className={classes.image} src={memory} alt="memories" height="60"/>
             </AppBar>
-            <Grow in>
+            <Grow in={true}>
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch"  spacing={4}>
                         <Grid item xs={12} sm={7}>
-                            <Posts></Posts>
+                            <Posts/>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <Form></Form>
+                            <Form/>
                         </Grid>
-
                     </Grid>
                 </Container>
 
