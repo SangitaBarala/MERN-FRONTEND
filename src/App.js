@@ -1,31 +1,31 @@
-import React, {useEffect} from "react";
-import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
-import {useDispatch} from "react-redux";
+import React, { useEffect } from 'react';
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
-import {getPosts} from './actions/posts'
+import Posts from './components/Posts/Posts';
+import Form from './components/Form/Form';
 
-import Posts from "./components/Posts/Posts";
-import Form from "./components/Form/Form";
-
-import memory from '../src/components/images/memory.jpg';
-
-import useStyles from './styles'
+import { getPosts} from './actions/posts';
+import useStyles from './styles';
+import memories from '../src/components/images/memory.jpg';
 
 const App = () => {
-    const classes = useStyles();
     const dispatch = useDispatch();
-    useEffect(()=>{
+    const classes = useStyles();
+
+    useEffect(() => {
         dispatch(getPosts());
     }, [dispatch]);
+
     return (
-        <Container maxidth="lg">
+        <Container maxWidth="lg">
             <AppBar className={classes.appBar} position="static" color="inherit">
                 <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
-                <img className={classes.image} src={memory} alt="memories" height="60"/>
+                <img className={classes.images} src={memories} alt="icon" height="60" />
             </AppBar>
-            <Grow in={true}>
+            <Grow in>
                 <Container>
-                    <Grid container justify="space-between" alignItems="stretch"  spacing={4}>
+                    <Grid container justify="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
                             <Posts/>
                         </Grid>
@@ -34,9 +34,8 @@ const App = () => {
                         </Grid>
                     </Grid>
                 </Container>
-
             </Grow>
         </Container>
     );
-}
-export default App;
+};
+export default App

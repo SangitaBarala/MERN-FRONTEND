@@ -1,14 +1,13 @@
-import { FETCH_ALL, CREATE } from '../constants/actionTypes';
+//import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
 
-const reducer= (posts = [], action)=>{
+const reducers = (posts = [], action)=>{
     switch (action.type){
-        case FETCH_ALL:
+        case 'FETCH_ALL':
             return action.payload;
-        case CREATE:
+        case 'CREATE':
             return [...posts, action.payload];
         default:
             return posts;
     }
-}
-//module.exports = reducer
-export default reducer
+};
+export default reducers
